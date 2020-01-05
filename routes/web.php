@@ -14,11 +14,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('page.home');
 });
 Route::group(['prefix' => 'page'], function () {
     Route::get('/', 'Page\HomeController@index');
-
+    Route::get('/profile','Page\ProfileController@index');
 
     /**
      * Trang tuyển dụng
@@ -32,6 +32,7 @@ Route::group(['prefix' => 'page'], function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 });
 
 Route::group(['prefix' => 'user'], function () {
@@ -43,5 +44,3 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
