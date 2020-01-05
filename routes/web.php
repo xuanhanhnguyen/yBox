@@ -17,8 +17,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix' => 'page'], function () {
-    Route::get('/','Page\HomeController@index');
-});
-Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'Page\HomeController@index');
 
+
+    /**
+     * Trang tuyển dụng
+     */
+    Route::group(['prefix' => 'tuyen-dung',], function () {
+        Route::name('recruiment.')->group(function () {
+            Route::get('/', 'Page\RecruimentController@index')->name('index');
+            Route::post('/them-bai-viet', 'Page\RecruimentController@createPost')->name('post.create');
+        });
+    });
 });
+
+Route::group(['prefix' => 'admin'], function () {
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

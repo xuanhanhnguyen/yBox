@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TypePost extends Model
 {
     protected $table = 'type_post';
+    protected $fillable = 'name';
     public $timestamps = true;
 
     public function post(){

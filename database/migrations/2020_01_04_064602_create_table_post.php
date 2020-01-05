@@ -18,8 +18,8 @@ class CreateTablePost extends Migration
             $table->unsignedBigInteger('type_id');
             $table->string('title');
             $table->string('content');
-            $table->date('end_date');
-            $table->string('image');
+            $table->date('end_date')->nullable();
+            $table->string('image')->nullable();
             $table->integer('total_coment')->default(0);
             $table->integer('total_like')->default(0);
             $table->integer('total_share')->default(0);

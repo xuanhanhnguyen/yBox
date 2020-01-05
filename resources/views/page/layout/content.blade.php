@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    @yield('style')
 </head>
 <body>
 <div class="wrapper">
@@ -33,5 +34,6 @@
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/scrollbar.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+@yield('js')
 </body>
 </html>
