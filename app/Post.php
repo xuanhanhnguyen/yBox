@@ -13,4 +13,14 @@ class Post extends Model
     public function type_post(){
         return $this->belongsTo('App\TypePost','type_id');
     }
+    
+    public function user(){
+        return $this->hasOne('App\User','id','create_by');
+    }
+
+    public function comment(){
+        return $this->hasMany('App\ComentPost','post_id','id');
+    }
+
+
 }

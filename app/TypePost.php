@@ -13,4 +13,5 @@ class TypePost extends Model
     public function post(){
         return $this->hasMany('App\Post','type_id','id');
     }
+    
 }

@@ -34,6 +34,14 @@ Route::group(['prefix' => 'page'], function () {
 Route::group(['prefix' => 'admin'], function () {
 });
 
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/like-post/{postId}', 'UserController@likePost')->name('user.post.like');
+    Route::post('/comment-post/{postId}', 'UserController@commentPost')->name('user.post.comment');
+    Route::post('/reply-comment/{postId}/{commentId}', 'UserController@replyPost')->name('user.post.reply');
+    Route::get('/follow-user/{hrId}', 'UserController@followUser')->name('user.hr.follow');
+
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
