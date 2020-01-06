@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +26,13 @@ Route::get('/', function () {
 Route::group(['prefix' => 'page'], function () {
 
     Route::get('/', 'Page\HomeController@index');
-    Route::get('/profile','Page\ProfileController@index');
+    
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/','Page\ProfileController@index');
+        Route::post('/avatar','Page\ProfileController@avatar')->name('changeAvatar');
+        Route::post('/','Page\ProfileController@edit')->name('edit_user');
+    });
+
 
     /**
      * Trang tuyển dụng
@@ -49,7 +57,10 @@ Route::group(['prefix' => 'page'], function () {
     });
 });
 
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+
     Route::prefix('recruiment')->group(function () {
         Route::get('/create', 'Recruitment\RecruimentsController@create');
         Route::post('/create', 'Recruitment\RecruimentsController@saveCreate')->name('saveRecruitment');
@@ -72,6 +83,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::prefix('user')->group(function () {
+      
+        Route::get('update/{id}', 'User\AdminController@update');
+        Route::post('update/{id}', 'User\AdminController@saveUpdate');
+        Route::get('delete/{id}', 'User\AdminController@delete');
+        Route::get('/show', 'User\AdminController@showAdmin')->name('showUser');
+    });
 });
 
 Route::group(['prefix' => 'user'], function () {

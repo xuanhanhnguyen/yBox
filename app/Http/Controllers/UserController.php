@@ -7,6 +7,7 @@ use App\FollowHr;
 use App\LikePost;
 use App\Post;
 use App\Reply;
+use App\SharePost;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,19 +17,18 @@ class UserController extends Controller
     public function likePost($postId)
     {
         $post = Post::findOrfail($postId);
-        if(!Auth::user()){
+        if (!Auth::user()) {
             return view('vui_long_dang_nhap');
         }
         $user  = Auth::user();
         $liked = LikePost::whereUser_id($user->id)->wherePost_id($postId)->first();
-        if($liked){
+        if ($liked) {
             $liked->delete();
             $post->total_like -= 1;
             $post->save();
             return redirect()->back();
-        }
-        else {
-            
+        } else {
+
             LikePost::create([
                 'user_id' => $user->id,
                 'post_id' => $postId
@@ -73,41 +73,65 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function followUser($hrId){
-        $hr = User::find($hrId); 
-        if(!Auth::user()){
+    public function followUser($hrId)
+    {
+        $hr = User::find($hrId);
+        if (!Auth::user()) {
             return view('vui_long_dang_nhap');
         }
         $user     = Auth::user();
         $followed = FollowHr::whereUser_id($user->id)->whereHr_id($hrId)->first();
-        if($followed){
+        if ($followed) {
             $followed->delete();
             $hr->total_follow -= 1;
             $hr->save();
             return redirect()->back();
-        }
-        else {
-        FollowHr::create([
-            'hr_id'   => $hrId,
-            'user_id' => $user->id
-        ]);
-        $hr->total_follow += 1;
-        $hr->save();
-        return redirect()->back();
+        } else {
+            FollowHr::create([
+                'hr_id'   => $hrId,
+                'user_id' => $user->id
+            ]);
+            $hr->total_follow += 1;
+            $hr->save();
+            return redirect()->back();
         }
     }
-    
-    public function deletePost($id){
+
+    public function deletePost($id)
+    {
         $post = Post::find($id);
-        if(Auth::user()){
-            if(Auth::user()->id == $post->user->id){
-                echo(' delete ');   
+        if (Auth::user()) {
+            if (Auth::user()->id == $post->user->id) {
+                $post->delete();
+                return redirect()->back();
             }
-            echo('Bạn không có quyên thực hiện chức năng này !');
+            echo ('Bạn không có quyên thực hiện chức năng này !');
+        } else {
+            echo ('Bạn không có quyên thực hiện chức năng này !');
         }
-        else{
-            echo('Bạn không có quyên thực hiện chức năng này !');
+    }
+
+    public function share($postId)
+    {
+        $post = Post::find($postId);
+        if (!Auth::user()) {
+            return view('vui_long_dang_nhap');
         }
-        
+        $user     = Auth::user();
+        $share    = SharePost::whereUser_id($user->id)->wherePost_id($postId)->first();
+        if ($share) {
+            $share->delete();
+            $post->total_share -= 1;
+            $post->save();
+            return redirect()->back();
+        } else {
+            SharePost::create([
+                'post_id' => $postId,
+                'user_id' => $user->id
+            ]);
+            $post->total_share += 1;
+            $post->save();
+            return redirect()->back();
+        }
     }
 }

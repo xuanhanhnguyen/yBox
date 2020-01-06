@@ -4,8 +4,14 @@
 @endsection
 @section('content')
 <section class="cover-sec">
-    <img src="http://via.placeholder.com/1600x400" alt="">
+    <img width="100%" height="400px" src="upload/image/{{Auth::user()->image}}" alt="">
+    <a onclick="document.getElementById('changImage').click()"><i class="fa fa-camera"></i></a>
+    <form role="form" id="image" action="{{route('changeAvatar')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input id="changImage" type="file" name="image" onchange="document.getElementById('image').submit()"  class="d-none">
+    </form>
 </section>
+
 <main>
     <div class="main-section">
         <div class="container">
@@ -15,622 +21,86 @@
                         <div class="main-left-sidebar">
                             <div class="user_profile">
                                 <div class="user-pro-img">
-                                    <img src="http://via.placeholder.com/170x170" alt="">
+                                    <img width="170px" height="170px" src="upload/avatar/{{Auth::user()->avatar}}" alt="">
+                                    <a  onclick="document.getElementById('avatar').click()"><i class="fa fa-camera"></i></a>
+                                    <form role="form" action="{{route('changeAvatar')}}" method="POST" id="changAvatar" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="file" name="avatar" id="avatar" onchange="document.getElementById('changAvatar').submit()" class="d-none">
+                                    </form>
                                 </div>
                                 <!--user-pro-img end-->
                                 <div class="user_pro_status">
-                                    <ul class="flw-hr">
-                                        <li><a href="#" title="" class="flww"><i class="la la-plus"></i>
-                                                Follow</a></li>
-                                        <li><a href="#" title="" class="hre">Hire</a></li>
-                                    </ul>
                                     <ul class="flw-status">
                                         <li>
-                                            <span>Following</span>
-                                            <b>34</b>
-                                        </li>
-                                        <li>
-                                            <span>Followers</span>
-                                            <b>155</b>
+                                            <b>{{Auth::user()->full_name}}</b>
+                                            <p>{{Auth::user()->total_follow}} Người theo dõi</p>
                                         </li>
                                     </ul>
                                 </div>
-                                <!--user_pro_status end-->
-                                <ul class="social_links">
-                                    <li><a href="#" title=""><i class="la la-globe"></i> www.example.com</a>
-                                    </li>
-                                    <li><a href="#" title=""><i class="fa fa-facebook-square"></i>
-                                            Http://www.facebook.com/john...</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-twitter"></i>
-                                            Http://www.Twitter.com/john...</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-google-plus-square"></i>
-                                            Http://www.googleplus.com/john...</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-behance-square"></i>
-                                            Http://www.behance.com/john...</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-pinterest"></i>
-                                            Http://www.pinterest.com/john...</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-instagram"></i>
-                                            Http://www.instagram.com/john...</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-youtube"></i>
-                                            Http://www.youtube.com/john...</a></li>
-                                </ul>
                             </div>
-                            <!--user_profile end-->
-                            <div class="suggestions full-width">
-                                <div class="sd-title">
-                                    <h3>Suggestions</h3>
-                                    <i class="la la-ellipsis-v"></i>
-                                </div>
-                                <!--sd-title end-->
-                                <div class="suggestions-list">
-                                    <div class="suggestion-usd">
-                                        <img src="http://via.placeholder.com/35x35" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Jessica William</h4>
-                                            <span>Graphic Designer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="http://via.placeholder.com/35x35" alt="">
-                                        <div class="sgt-text">
-                                            <h4>John Doe</h4>
-                                            <span>PHP Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="http://via.placeholder.com/35x35" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Poonam</h4>
-                                            <span>Wordpress Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="http://via.placeholder.com/35x35" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Bill Gates</h4>
-                                            <span>C & C++ Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="http://via.placeholder.com/35x35" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Jessica William</h4>
-                                            <span>Graphic Designer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="http://via.placeholder.com/35x35" alt="">
-                                        <div class="sgt-text">
-                                            <h4>John Doe</h4>
-                                            <span>PHP Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="view-more">
-                                        <a href="#" title="">View More</a>
-                                    </div>
-                                </div>
-                                <!--suggestions-list end-->
-                            </div>
-                            <!--suggestions end-->
                         </div>
                         <!--main-left-sidebar end-->
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-9">
                         <div class="main-ws-sec">
-                            <div class="user-tab-sec">
-                                <h3>John Doe</h3>
-                                <div class="star-descp">
-                                    <span>Graphic Designer at Self Employed</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star-half-o"></i></li>
-                                    </ul>
-                                </div>
-                                <!--star-descp end-->
-                                <div class="tab-feed">
-                                    <ul>
-                                        <li data-tab="feed-dd" class="active">
-                                            <a href="#" title="">
-                                                <img src="images/ic1.png" alt="">
-                                                <span>Feed</span>
-                                            </a>
-                                        </li>
-                                        <li data-tab="info-dd">
-                                            <a href="#" title="">
-                                                <img src="images/ic2.png" alt="">
-                                                <span>Info</span>
-                                            </a>
-                                        </li>
-                                        <li data-tab="portfolio-dd">
-                                            <a href="#" title="">
-                                                <img src="images/ic3.png" alt="">
-                                                <span>Portfolio</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div><!-- tab-feed end-->
+                            <div class="user-tab-sec mb-3 text-center">
+                                <button class="btn btn-danger">Thanh toán Paypal</button>
                             </div>
                             <!--user-tab-sec end-->
                             <div class="product-feed-tab current" id="feed-dd">
                                 <div class="posts-section">
-                                    <div class="post-bar">
-                                        <div class="post_topbar">
-                                            <div class="usy-dt">
-                                                <img src="http://via.placeholder.com/50x50" alt="">
-                                                <div class="usy-name">
-                                                    <h3>John Doe</h3>
-                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
-                                                </div>
+                                    <div class="post-bar p-4">
+                                        <div class="text-center">
+                                            <h3>Thông tin cá nhân: <span class="text-danger">(*)</span></h3>
+                                        </div>
+                                        <hr width="100%">
+                                        <form method="POST" action="{{route('edit_user')}}">
+                                            @csrf
+                                            <div class="form-group">
+                                              <label class="mb-2">Họ & tên: <span class="text-danger">(*)</span></label>
+                                                <input type="text" name="fullname" class="form-control" value="{{Auth::user()->full_name}}" placeholder="Nguyễn Văn A">
                                             </div>
-                                            <div class="ed-opts">
-                                                <a href="#" title="" class="ed-opts-open"><i
-                                                        class="la la-ellipsis-v"></i></a>
-                                                <ul class="ed-options">
-                                                    <li><a href="#" title="">Edit Post</a></li>
-                                                    <li><a href="#" title="">Unsaved</a></li>
-                                                    <li><a href="#" title="">Unbid</a></li>
-                                                    <li><a href="#" title="">Close</a></li>
-                                                    <li><a href="#" title="">Hide</a></li>
-                                                </ul>
+                                            <div class="form-group">
+                                              <label class="mb-2">Email: <span class="text-danger">(*)</span></label>
+                                              <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                                             </div>
-                                        </div>
-                                        <div class="epi-sec">
-                                            <ul class="descp">
-                                                <li><img src="images/icon8.png" alt=""><span>Epic Coder</span>
-                                                </li>
-                                                <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                            </ul>
-                                            <ul class="bk-links">
-                                                <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job_descp">
-                                            <h3>Senior Wordpress Developer</h3>
-                                            <ul class="job-dt">
-                                                <li><a href="#" title="">Full Time</a></li>
-                                                <li><span>$30 / hr</span></li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                                luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id
-                                                magna sit amet... <a href="#" title="">view more</a></p>
-                                            <ul class="skill-tags">
-                                                <li><a href="#" title="">HTML</a></li>
-                                                <li><a href="#" title="">PHP</a></li>
-                                                <li><a href="#" title="">CSS</a></li>
-                                                <li><a href="#" title="">Javascript</a></li>
-                                                <li><a href="#" title="">Wordpress</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job-status-bar">
-                                            <ul class="like-com">
-                                                <li>
-                                                    <a href="#"><i class="la la-heart"></i> Like</a>
-                                                    <img src="images/liked-img.png" alt="">
-                                                    <span>25</span>
-                                                </li>
-                                                <li><a href="#" title="" class="com"><img src="images/com.png"
-                                                            alt=""> Comment 15</a></li>
-                                            </ul>
-                                            <a><i class="la la-eye"></i>Views 50</a>
-                                        </div>
+                                            <div class="row">
+                                                <div class="form-group col-4 px-0">
+                                                    <label class="mb-2">Giới tính:</label>
+                                                    <select class="form-control" name="gender">
+                                                    @if(Auth::user()->gender == '1')
+                                                        <option selected value="1">Nam</option>
+                                                        <option value="0">Nữ</option>
+                                                        <option value="2">Khác</option>
+                                                    @elseif(Auth::user()->gender == '2')
+                                                        <option value="1">Nam</option>
+                                                        <option value="0">Nữ</option>
+                                                        <option selected value="2">Khác</option>
+                                                    @elseif(Auth::user()->gender == '0')
+                                                        <option value="1">Nam</option>
+                                                        <option selected value="0">Nữ</option>
+                                                        <option value="2">Khác</option>
+                                                    @endif
+                                                    </select>
+                                                </div> 
+                                            </div> 
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                                            </div>
+                                          </form>
                                     </div>
-                                    <!--post-bar end-->
-                                    <div class="post-bar">
-                                        <div class="post_topbar">
-                                            <div class="usy-dt">
-                                                <img src="http://via.placeholder.com/50x50" alt="">
-                                                <div class="usy-name">
-                                                    <h3>John Doe</h3>
-                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="ed-opts">
-                                                <a href="#" title="" class="ed-opts-open"><i
-                                                        class="la la-ellipsis-v"></i></a>
-                                                <ul class="ed-options">
-                                                    <li><a href="#" title="">Edit Post</a></li>
-                                                    <li><a href="#" title="">Unsaved</a></li>
-                                                    <li><a href="#" title="">Unbid</a></li>
-                                                    <li><a href="#" title="">Close</a></li>
-                                                    <li><a href="#" title="">Hide</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="epi-sec">
-                                            <ul class="descp">
-                                                <li><img src="images/icon8.png" alt=""><span>Front End
-                                                        Developer</span></li>
-                                                <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                            </ul>
-                                            <ul class="bk-links">
-                                                <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job_descp">
-                                            <h3>Simple Classified Site</h3>
-                                            <ul class="job-dt">
-                                                <li><span>$300 - $350</span></li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                                luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id
-                                                magna sit amet... <a href="#" title="">view more</a></p>
-                                            <ul class="skill-tags">
-                                                <li><a href="#" title="">HTML</a></li>
-                                                <li><a href="#" title="">PHP</a></li>
-                                                <li><a href="#" title="">CSS</a></li>
-                                                <li><a href="#" title="">Javascript</a></li>
-                                                <li><a href="#" title="">Wordpress</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job-status-bar">
-                                            <ul class="like-com">
-                                                <li>
-                                                    <a href="#"><i class="la la-heart"></i> Like</a>
-                                                    <img src="images/liked-img.png" alt="">
-                                                    <span>25</span>
-                                                </li>
-                                                <li><a href="#" title="" class="com"><img src="images/com.png"
-                                                            alt=""> Comment 15</a></li>
-                                            </ul>
-                                            <a><i class="la la-eye"></i>Views 50</a>
-                                        </div>
-                                    </div>
-                                    <!--post-bar end-->
-                                    <div class="post-bar">
-                                        <div class="post_topbar">
-                                            <div class="usy-dt">
-                                                <img src="http://via.placeholder.com/50x50" alt="">
-                                                <div class="usy-name">
-                                                    <h3>John Doe</h3>
-                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="ed-opts">
-                                                <a href="#" title="" class="ed-opts-open"><i
-                                                        class="la la-ellipsis-v"></i></a>
-                                                <ul class="ed-options">
-                                                    <li><a href="#" title="">Edit Post</a></li>
-                                                    <li><a href="#" title="">Unsaved</a></li>
-                                                    <li><a href="#" title="">Unbid</a></li>
-                                                    <li><a href="#" title="">Close</a></li>
-                                                    <li><a href="#" title="">Hide</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="epi-sec">
-                                            <ul class="descp">
-                                                <li><img src="images/icon8.png" alt=""><span>Epic Coder</span>
-                                                </li>
-                                                <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                            </ul>
-                                            <ul class="bk-links">
-                                                <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job_descp">
-                                            <h3>Senior UI / UX designer</h3>
-                                            <ul class="job-dt">
-                                                <li><a href="#" title="">Par Time</a></li>
-                                                <li><span>$10 / hr</span></li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                                luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id
-                                                magna sit amet... <a href="#" title="">view more</a></p>
-                                            <ul class="skill-tags">
-                                                <li><a href="#" title="">HTML</a></li>
-                                                <li><a href="#" title="">PHP</a></li>
-                                                <li><a href="#" title="">CSS</a></li>
-                                                <li><a href="#" title="">Javascript</a></li>
-                                                <li><a href="#" title="">Wordpress</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job-status-bar">
-                                            <ul class="like-com">
-                                                <li>
-                                                    <a href="#"><i class="la la-heart"></i> Like</a>
-                                                    <img src="images/liked-img.png" alt="">
-                                                    <span>25</span>
-                                                </li>
-                                                <li><a href="#" title="" class="com"><img src="images/com.png"
-                                                            alt=""> Comment 15</a></li>
-                                            </ul>
-                                            <a><i class="la la-eye"></i>Views 50</a>
-                                        </div>
-                                    </div>
-                                    <!--post-bar end-->
-                                    <div class="post-bar">
-                                        <div class="post_topbar">
-                                            <div class="usy-dt">
-                                                <img src="http://via.placeholder.com/50x50" alt="">
-                                                <div class="usy-name">
-                                                    <h3>John Doe</h3>
-                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="ed-opts">
-                                                <a href="#" title="" class="ed-opts-open"><i
-                                                        class="la la-ellipsis-v"></i></a>
-                                                <ul class="ed-options">
-                                                    <li><a href="#" title="">Edit Post</a></li>
-                                                    <li><a href="#" title="">Unsaved</a></li>
-                                                    <li><a href="#" title="">Unbid</a></li>
-                                                    <li><a href="#" title="">Close</a></li>
-                                                    <li><a href="#" title="">Hide</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="epi-sec">
-                                            <ul class="descp">
-                                                <li><img src="images/icon8.png" alt=""><span>Epic Coder</span>
-                                                </li>
-                                                <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                            </ul>
-                                            <ul class="bk-links">
-                                                <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job_descp">
-                                            <h3>Ios Shopping mobile app</h3>
-                                            <ul class="job-dt">
-                                                <li><span>$300 - $350</span></li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                                luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id
-                                                magna sit amet... <a href="#" title="">view more</a></p>
-                                            <ul class="skill-tags">
-                                                <li><a href="#" title="">HTML</a></li>
-                                                <li><a href="#" title="">PHP</a></li>
-                                                <li><a href="#" title="">CSS</a></li>
-                                                <li><a href="#" title="">Javascript</a></li>
-                                                <li><a href="#" title="">Wordpress</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job-status-bar">
-                                            <ul class="like-com">
-                                                <li>
-                                                    <a href="#"><i class="la la-heart"></i> Like</a>
-                                                    <img src="images/liked-img.png" alt="">
-                                                    <span>25</span>
-                                                </li>
-                                                <li><a href="#" title="" class="com"><img src="images/com.png"
-                                                            alt=""> Comment 15</a></li>
-                                            </ul>
-                                            <a><i class="la la-eye"></i>Views 50</a>
-                                        </div>
-                                    </div>
-                                    <!--post-bar end-->
-                                    <div class="process-comm">
-                                        <div class="spinner">
-                                            <div class="bounce1"></div>
-                                            <div class="bounce2"></div>
-                                            <div class="bounce3"></div>
-                                        </div>
-                                    </div>
-                                    <!--process-comm end-->
                                 </div>
                                 <!--posts-section end-->
                             </div>
-                            <!--product-feed-tab end-->
-                            <div class="product-feed-tab" id="info-dd">
-                                <div class="user-profile-ov">
-                                    <h3>Overview</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor
-                                        aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue
-                                        nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo
-                                        viverra. Nunc eu augue nec arcu efficitur faucibus. Aliquam accumsan ac
-                                        magna convallis bibendum. Quisque laoreet augue eget augue fermentum
-                                        scelerisque. Vivamus dignissim mollis est dictum blandit. Nam porta
-                                        auctor neque sed congue. Nullam rutrum eget ex at maximus. Lorem ipsum
-                                        dolor sit amet, consectetur adipiscing elit. Donec eget vestibulum
-                                        lorem.</p>
-                                </div>
-                                <!--user-profile-ov end-->
-                                <div class="user-profile-ov st2">
-                                    <h3>Experience</h3>
-                                    <h4>Web designer</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor
-                                        aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue
-                                        nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo
-                                        viverra. </p>
-                                    <h4>UI / UX Designer</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor
-                                        aliquam felis, nec condimentum ipsum commodo id.</p>
-                                    <h4>PHP developer</h4>
-                                    <p class="no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id.
-                                        Vivamus sit amet augue nec urna efficitur tincidunt. Vivamus consectetur
-                                        aliquam lectus commodo viverra. </p>
-                                </div>
-                                <!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3>Education</h3>
-                                    <h4>Master of Computer Science</h4>
-                                    <span>2015 - 2018</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor
-                                        aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue
-                                        nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo
-                                        viverra. </p>
-                                </div>
-                                <!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3>Location</h3>
-                                    <h4>India</h4>
-                                    <p>151/4 BT Chownk, Delhi </p>
-                                </div>
-                                <!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3>Skills</h3>
-                                    <ul>
-                                        <li><a href="#" title="">HTML</a></li>
-                                        <li><a href="#" title="">PHP</a></li>
-                                        <li><a href="#" title="">CSS</a></li>
-                                        <li><a href="#" title="">Javascript</a></li>
-                                        <li><a href="#" title="">Wordpress</a></li>
-                                        <li><a href="#" title="">Photoshop</a></li>
-                                        <li><a href="#" title="">Illustrator</a></li>
-                                        <li><a href="#" title="">Corel Draw</a></li>
-                                    </ul>
-                                </div>
-                                <!--user-profile-ov end-->
-                            </div>
-                            <!--product-feed-tab end-->
-                            <div class="product-feed-tab" id="portfolio-dd">
-                                <div class="portfolio-gallery-sec">
-                                    <h3>Portfolio</h3>
-                                    <div class="gallery_pf">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/271x174" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="http://via.placeholder.com/170x170" alt="">
-                                                    <a href="#" title=""><img src="images/all-out.png"
-                                                            alt=""></a>
-                                                </div>
-                                                <!--gallery_pt end-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--gallery_pf end-->
-                                </div>
-                                <!--portfolio-gallery-sec end-->
-                            </div>
-                            <!--product-feed-tab end-->
+                            
                         </div>
                         <!--main-ws-sec end-->
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="right-sidebar">
-                            <div class="message-btn">
-                                <a href="#" title=""><i class="fa fa-envelope"></i> Message</a>
-                            </div>
-                            <div class="widget widget-portfolio">
-                                <div class="wd-heady">
-                                    <h3>Portfolio</h3>
-                                    <img src="images/photo-icon.png" alt="">
-                                </div>
-                                <div class="pf-gallery">
-                                    <ul>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                        <li><a href="#" title=""><img src="http://via.placeholder.com/70x70"
-                                                    alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <!--pf-gallery end-->
-                            </div>
-                            <!--widget-portfolio end-->
-                        </div>
-                        <!--right-sidebar end-->
                     </div>
                 </div>
             </div><!-- main-section-data end-->
         </div>
     </div>
 </main>
+
+
 @endsection

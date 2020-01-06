@@ -23,6 +23,9 @@ class ScholarshipController extends Controller
         if($user){
             $liked = LikePost::whereUser_id($user->id)->wherePost_id($id)->count();
         }
+        else{
+            $liked = 0;
+        }
         $post->total_view += 1;
         $post->save();
         return view('page.scholarship.detail', ['post' => $post ,'liked' => $liked]);

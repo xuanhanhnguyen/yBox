@@ -111,7 +111,6 @@
 											<div class="ed-opts">
 												<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
 												<ul class="ed-options">
-													<li><a href="#" title="">Chỉnh sửa</a></li>
 													<li><a href="{{route('user.post.delete',$postNew->id)}}" title="">Xóa</a></li>
 												</ul>
 											</div>
@@ -315,11 +314,7 @@
 											<div class="ed-opts">
 												<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
 												<ul class="ed-options">
-													<li><a href="#" title="">Edit Post</a></li>
-													<li><a href="#" title="">Unsaved</a></li>
-													<li><a href="#" title="">Unbid</a></li>
-													<li><a href="#" title="">Close</a></li>
-													<li><a href="#" title="">Hide</a></li>
+													<li><a href="{{route('user.post.delete',$postNew->id)}}" title="">Xóa</a></li>
 												</ul>
 											</div>
 										</div>
