@@ -96,6 +96,22 @@
                 <a href="#" title=""><i class="fa fa-bars"></i></a>
             </div><!--menu-btn end-->
             <div class="user-account">
+<<<<<<< HEAD
+                <div class="user-info">
+                    <img src="http://via.placeholder.com/30x30" alt="">
+                   
+                    <a href="#">User</a>
+                   
+                    <i class="la la-sort-down"></i>
+                </div>
+                <div class="user-account-settingss">
+                    <ul class="us-links">
+                        <li><a href="#" title="">Trang cá nhân</a></li>
+                        <li><a href="#" title="">Đổi mật khẩu</a></li>
+                    </ul>
+                    <h3 class="tc"><a href="sign-in.html" title="">Đăng xuất</a></h3>
+                </div><!--user-account-settingss end-->
+=======
                 
                 @if(Auth::user() !== null)
                     <div class="user-info">
@@ -120,6 +136,7 @@
                         <a href="{{route('login')}}" style="float:none">Đăng nhập</a>
                     </div>
                 @endif
+>>>>>>> 2f6bb649cd60df91b90be45f6231ae319541e803
             </div>
         </div><!--header-data end-->
     </div>

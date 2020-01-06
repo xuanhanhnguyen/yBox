@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +16,7 @@
 |
 */
 
-use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('page.home');
@@ -44,6 +49,29 @@ Route::group(['prefix' => 'page'], function () {
     });
 });
 
+<<<<<<< HEAD
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::prefix('recruiment')->group(function () {
+        Route::get('/create', 'Recruitment\RecruimentsController@create');
+        Route::post('/create', 'Recruitment\RecruimentsController@saveCreate')->name('saveRecruitment');
+        Route::get('update/{id}', 'Recruitment\RecruimentsController@update');
+        Route::post('update/{id}', 'Recruitment\RecruimentsController@saveUpdate');
+        Route::get('delete/{id}', 'Recruitment\RecruimentsController@delete');
+        Route::get('/show', 'Recruitment\RecruimentsController@showRecruitment')->name('showrecruitment');
+    });
+    Route::prefix('scholarship')->group(function () {
+        Route::get('/create', 'Scholarship\ScholarshipController@create');
+        Route::post('/create', 'Scholarship\ScholarshipController@saveCreate')->name('saveScholarship');
+        Route::get('update/{id}', 'Scholarship\ScholarshipController@update');
+        Route::post('update/{id}', 'Scholarship\ScholarshipController@saveUpdate');
+        Route::get('delete/{id}', 'Scholarship\ScholarshipController@delete');
+        Route::get('/show', 'Scholarship\ScholarshipController@showScholarship')->name('showScholarship');
+    });
+});
+
+
+Auth::routes();
+=======
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
@@ -55,5 +83,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/follow-user/{hrId}', 'UserController@followUser')->name('user.hr.follow');
 
 });
+>>>>>>> 2f6bb649cd60df91b90be45f6231ae319541e803
 
 Auth::routes();
