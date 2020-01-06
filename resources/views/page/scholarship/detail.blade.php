@@ -11,7 +11,7 @@
                     <div class="forum-post-view">
                         <div class="usr-question">
                             <div class="usr_img">
-                                <img style="width:60px; height:60px; border-radius:50%" src="{{asset('images/'.$post->user->avatar)}}" alt="">
+                                <img style="width:60px; height:60px; border-radius:50%" src="{{asset('upload/avatar/'.$post->user->avatar)}}" alt="">
                             </div>
                             <div class="usr_quest">
                                 <h3>{{$post->title}}</h3>
@@ -30,7 +30,7 @@
                                             <li>
                                                 <div class="comment-list">
                                                     <div class="bg-img">
-                                                        <img style="width:40px; height:40px; border-radius:50%"src="{{asset('images/'.$comment->user->avatar)}}" alt="">
+                                                        <img style="width:40px; height:40px; border-radius:50%"src="{{asset('upload/avatar/'.$comment->user->avatar)}}" alt="">
                                                     </div>
                                                     <div class="comment">
                                                         <h3>{{$comment->user->full_name}}</h3>
@@ -57,7 +57,7 @@
                         @if(Auth::user())
                         <div class="user-poster">
                             <div class="usr-post-img">
-                                <img src="{{asset('images/'.Auth::user()->avatar)}}" alt="">
+                                <img src="{{asset('upload/avatar/'.Auth::user()->avatar)}}" alt="">
                             </div>
                             <div class="post_comment_sec">
                                 <form method="post" action="{{route('user.post.comment',$post->id)}}">

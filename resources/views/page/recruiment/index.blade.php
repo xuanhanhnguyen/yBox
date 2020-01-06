@@ -86,7 +86,7 @@
 						<div class="main-ws-sec">
 							<div class="post-topbar">
 								<div class="user-picy">
-									<img style="width:50px; height:50px;border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+									<img style="width:50px; height:50px;border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 								</div>
 								<div class="post-st">
 									<ul>

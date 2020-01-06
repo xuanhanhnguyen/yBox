@@ -1,4 +1,4 @@
-<header>
+    <header>
     <div class="container">
         <div class="header-data">
             <div class="logo">
@@ -95,13 +95,13 @@
             <div class="menu-btn">
                 <a href="#" title=""><i class="fa fa-bars"></i></a>
             </div><!--menu-btn end-->
-            <div class="user-account">
-                
+            <div class="user-account" style="width: 118px;">
+            
                 @if(Auth::user() !== null)
                     <div class="user-info">
-                        <img src="http://via.placeholder.com/30x30" alt="">
+                        <img style="width:30px; height:30px; border-radius:50%" src="{{asset('upload/avatar/'.Auth::user()->avatar)}}" alt="">
                         <a>{{Auth::user()->full_name}}</a>
-                        <i class="la la-sort-down"></i>
+                        <i style="right: 3px;    cursor: pointer;" class="la la-sort-down" ></i>
                     </div>
                     <div class="user-account-settingss">
                         <ul class="us-links">

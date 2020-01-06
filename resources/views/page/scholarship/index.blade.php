@@ -29,7 +29,7 @@
                   <div class="caption py-3 px-2">
                     <h2 style="margin-bottom: 10px;"><a style="font-size: 22px; color:black" href="{{route('scholarship.detail',$post->id)}}">{{$post->title}}</a></h2>
                     <p style="font-size: 15px;margin-top:5px;    margin-bottom: 15px;">{{$post->description}}</p>
-                    <img style="width:40px; height:40px; border-radius:50%;margin-right: 13px;" src="http://localhost:8000/images/hr-avatar.jpg" alt="">
+                    <img style="width:40px; height:40px; border-radius:50%;margin-right: 13px;" src="{{asset('upload/avatar/'.$post->user->avatar)}}" alt="">
                     <ul class="like-com">
                       <li>{{$post->user->full_name}}</li>
                       <li>
@@ -38,7 +38,7 @@
                         </a>
                       </li>
                       <li><a href="javascript:void(0)" title="" class="com"><img src="images/com.png" alt="">{{$post->total_coment}} bình luận</a></li>
-                      <li><a href="javascript:void(0)" title="" class="com"><i class="fa fa-share-alt"></i>{{$post->total_share}} Chia sẻ</a></li>
+                      <li><a href="javascript:void(0)" title="" class="com"><i class="fa fa-share-alt"></i>  {{$post->total_share}} Chia sẻ</a></li>
                     </ul>
                     <div class="time float-right"><span style="color: #b2b2b2;font-size: 14px;">{{date('d/m/Y',strtotime($post->created_at))}}</span></div>
                   </div>

@@ -42,7 +42,6 @@ class ProfileController extends Controller
         return redirect('page/profile');
     }
     public function edit(Request $request){
-        // return $request;
         $user = User::find(Auth::user()->id);
 
         $user->full_name = $request->fullname;
