@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header-data">
             <div class="logo">
-                <a href="index.html" title=""><img src="images/logo.png" alt=""></a>
+                <a href="page" title=""><img src="images/logo.png" alt=""></a>
             </div><!--logo end-->
             <div class="search-bar">
                 <form>
@@ -13,14 +13,14 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="index.html" title="">
+                        <a href="page" title="">
                             <span><img src="images/icon1.png" alt=""></span>
                             Trang chủ
                         </a>
                     </li>
                     {{-------------------}}
                     <li>
-                        <a href="companies.html" title="">
+                        <a href="page/tuyen-dung" title="">
                             <span><img src="images/icon2.png" alt=""></span>
                             Tuyển dụng
                         </a>
@@ -34,7 +34,7 @@
                     </li>
                     {{-------------------}}
                     <li>
-                        <a href="#" title="" class="not-box-open">
+                        <a title="" class="not-box-open">
                             <span><img src="images/icon7.png" alt=""></span>
                             Thông báo
                         </a>
@@ -96,6 +96,7 @@
                 <a href="#" title=""><i class="fa fa-bars"></i></a>
             </div><!--menu-btn end-->
             <div class="user-account">
+<<<<<<< HEAD
                 <div class="user-info">
                     <img src="http://via.placeholder.com/30x30" alt="">
                    
@@ -110,6 +111,32 @@
                     </ul>
                     <h3 class="tc"><a href="sign-in.html" title="">Đăng xuất</a></h3>
                 </div><!--user-account-settingss end-->
+=======
+                
+                @if(Auth::user() !== null)
+                    <div class="user-info">
+                        <img src="http://via.placeholder.com/30x30" alt="">
+                        <a>{{Auth::user()->full_name}}</a>
+                        <i class="la la-sort-down"></i>
+                    </div>
+                    <div class="user-account-settingss">
+                        <ul class="us-links">
+                            <li><a href="page/profile" title="">Trang cá nhân</a></li>
+                            <li><a href="#" title="">Đổi mật khẩu</a></li>
+                        </ul>
+                        <h3 class="tc"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-lg"></i>Đăng xuất</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>    
+                        </h3>
+                    </div><!--user-account-settingss end-->
+                @else
+                    <div class="user-info text-center" style="padding-top:20px">
+                        <a href="{{route('login')}}" style="float:none">Đăng nhập</a>
+                    </div>
+                @endif
+>>>>>>> 2f6bb649cd60df91b90be45f6231ae319541e803
             </div>
         </div><!--header-data end-->
     </div>

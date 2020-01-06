@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
                 'full_name'    => 'admin',
                 'email'        => 'admin@gmail.com',
                 'password'     => Hash::make('123456'),
-                'avatar'       => 'hr-avatar.png',
+                'avatar'       => 'hr-avatar.jpg',
                 'gender'       => 1,
                 'total_follow' => 0,
                 'created_at'   => Carbon::now()
@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
             [
                 'role_id'      => 2,
                 'full_name'    => 'HR',
-                'avatar'       => 'hr-avatar.png',
+                'avatar'       => 'hr-avatar.jpg',
                 'email'        => 'company@gmail.com',
                 'password'     => Hash::make('123456'),
                 'gender'       => 1,
@@ -38,7 +38,7 @@ class UserTableSeeder extends Seeder
             [
                 'role_id'      => 3,
                 'full_name'    => 'student',
-                'avatar'       => 'hr-avatar.png',
+                'avatar'       => 'hr-avatar.jpg',
                 'email'        => 'student@gmail.com',
                 'password'     => Hash::make('123456'),
                 'gender'       => 1,

@@ -293,7 +293,7 @@
                 </div><!--top-profiles end-->
                 {{----}}
                 <div class="main-section-data">
-                    <hr width="100%" class="px-3" color="#e44d3a">
+                    <hr width="100%" class="mx-3" color="#e44d3a">
                     <div class="row">
                         <div class="col-md-4 no-pd">
                             <div class="post-bar">

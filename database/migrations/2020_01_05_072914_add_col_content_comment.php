@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColAvatarUser extends Migration
+class AddColContentComment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddColAvatarUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar', 191)->default('hr-avatar.jpg');
+        Schema::table('coment_post', function (Blueprint $table) {
+            $table->string('content', 191);
         });
 
     }
@@ -26,8 +26,8 @@ class AddColAvatarUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['avatar']);
+        Schema::table('coment_post', function (Blueprint $table) {
+            $table->dropColumn(['content']);
         });
     }
 }

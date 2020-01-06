@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('page.home');
 });
 Route::group(['prefix' => 'page'], function () {
     Route::get('/', 'Page\HomeController@index');
-
+    Route::get('/profile','Page\ProfileController@index');
 
     /**
      * Trang tuyển dụng
@@ -36,6 +36,7 @@ Route::group(['prefix' => 'page'], function () {
     });
 });
 
+<<<<<<< HEAD
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::prefix('recruiment')->group(function () {
         Route::get('/create', 'Recruitment\RecruimentsController@create');
@@ -57,5 +58,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 Auth::routes();
+=======
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/like-post/{postId}', 'UserController@likePost')->name('user.post.like');
+    Route::post('/comment-post/{postId}', 'UserController@commentPost')->name('user.post.comment');
+    Route::post('/reply-comment/{postId}/{commentId}', 'UserController@replyPost')->name('user.post.reply');
+    Route::get('/follow-user/{hrId}', 'UserController@followUser')->name('user.hr.follow');
+
+});
+>>>>>>> 2f6bb649cd60df91b90be45f6231ae319541e803
+
+Auth::routes();
