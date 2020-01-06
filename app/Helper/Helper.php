@@ -44,5 +44,28 @@ class Helper
         }
         return $time;
     }
-  
+    
+    public static function getDescription($content){
+        $array = explode(' ',$content);
+        $i = 0;
+        $description = '';
+        foreach($array as $value){
+             if($i == 0){
+                $description = $value;
+             }
+             else if($i == count($array)){
+                return $description;
+             }
+             else if($i <= 50){
+                 $description .= ' '.$value;
+             }
+             else {
+                 return $description;
+             }
+             $i ++; 
+        
+        }
+        $description .= ' ...';
+        return $description;  
+    }
 }

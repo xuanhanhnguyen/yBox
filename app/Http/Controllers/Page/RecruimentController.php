@@ -6,16 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class RecruimentController extends Controller
+
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         /**
          * Get user login
          */
-
-        $user = User::whereRole_id(2)->first();
+        
+        $user = Auth::user();
 
         /**
          * Get post recruiment new 

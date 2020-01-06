@@ -11,69 +11,41 @@
                     <div class="forum-post-view">
                         <div class="usr-question">
                             <div class="usr_img">
-                                <img src="http://via.placeholder.com/60x60" alt="">
+                                <img style="width:60px; height:60px; border-radius:50%" src="{{asset('images/'.$post->user->avatar)}}" alt="">
                             </div>
                             <div class="usr_quest">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-                                <span><i class="fa fa-clock-o"></i>3 min ago</span>
+                                <h3>{{$post->title}}</h3>
+                                <span><i class="fa fa-clock-o"></i>{{Helper::getTimeAgo($post->created_at)}}</span>
                                 <ul class="react-links">
-                                    <li><a href="#" title=""><i class="fa fa-heart"></i> Vote 150</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-share-alt"></i> Share</a></li>
+                                    <li><a href="{{route('user.post.like',$post->id)}}" title=""><i class="fa fa-heart" {{$liked ? 'style=color:red' :''}}></i> Thích {{$post->total_like}}</a></li>
+                                    <li><a href="#" title=""><i class="fa fa-share-alt"></i> Chia sẻ</a></li>
                                 </ul>
-                                <ul class="quest-tags">
-                                    <li><a href="#" title="">Work</a></li>
-                                    <li><a href="#" title="">Php</a></li>
-                                    <li><a href="#" title="">Design</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at libero elit. Mauris ultrices sed lorem nec efficitur. Donec sit amet facilisis lorem, quis facilisis tellus. Nullam mollis dignissim nisi sit amet tempor. Nullam sollicitudin neque a felis commodo gravida at sed nunc. In justo nunc, sagittis sed venenatis at, dictum vel erat. Curabitur at quam ipsum. Quisque eget nibh aliquet, imperdiet diam pharetra, dapibus lacus. Sed tincidunt sapien in dui imperdiet eleifend. Ut ut sagittis purus, non tristique elit. Quisque tincidunt metus eget ligula sodales luctus. Donec convallis ex at dui convallis malesuada. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut pretium euismod mollis. Pellentesque convallis gravida ante eu pretium. Integer rutrum mi nec purus tincidunt, nec rhoncus mauris porttitor. Donec id tellus at leo gravida egestas. Suspendisse consequat mi vel euismod efficitur. Donec sed elementum libero.</p>
-                                <p> Etiam rutrum ut urna eu tempus. Curabitur suscipit quis lorem vel dictum. Aliquam erat volutpat. Pellentesque volutpat viverra pulvinar. Mauris ac sapien ac metus tincidunt volutpat eu eu purus. Suspendisse pharetra quis quam id auctor. Pellentesque feugiat venenatis urna, vitae suscipit enim volutpat vitae. Nunc egestas tortor est, at sodales ligula auctor efficitur.</p>
+                                <p class="py-3">{!! $post->content !!}</p>
+                                @if(!$post->comment->isEmpty())
                                 <div class="comment-section">
-                                    <h3>03 Comments</h3>
+                                    <h3>{{$post->total_coment}} bình luận</h3>
                                     <div class="comment-sec">
                                         <ul>
+                                            @foreach($post->comment as $comment)
                                             <li>
                                                 <div class="comment-list">
                                                     <div class="bg-img">
-                                                        <img src="http://via.placeholder.com/40x40" alt="">
+                                                        <img style="width:40px; height:40px; border-radius:50%"src="{{asset('images/'.$comment->user->avatar)}}" alt="">
                                                     </div>
                                                     <div class="comment">
-                                                        <h3>John Smith</h3>
-                                                        <span><img src="images/clock.png" alt=""> 3 min ago</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at libero elit. Mauris ultrices sed lorem nec efficitur.</p>
+                                                        <h3>{{$comment->user->full_name}}</h3>
+                                                        <span><img src="images/clock.png" alt="">{{Helper::getTimeAgo($comment->created_at)}}</span>
+                                                        <p>{{$comment->content}}</p>
                                                     </div>
                                                 </div>
                                                 <!--comment-list end-->
                                             </li>
-                                            <li>
-                                                <div class="comment-list">
-                                                    <div class="bg-img">
-                                                        <img src="http://via.placeholder.com/40x40" alt="">
-                                                    </div>
-                                                    <div class="comment">
-                                                        <h3>John Doe</h3>
-                                                        <span><img src="images/clock.png" alt=""> 3 min ago</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-                                                    </div>
-                                                </div>
-                                                <!--comment-list end-->
-                                            </li>
-                                            <li>
-                                                <div class="comment-list">
-                                                    <div class="bg-img">
-                                                        <img src="http://via.placeholder.com/40x40" alt="">
-                                                    </div>
-                                                    <div class="comment">
-                                                        <h3>John Doe</h3>
-                                                        <span><img src="images/clock.png" alt=""> 3 min ago</span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-                                                    </div>
-                                                </div>
-                                                <!--comment-list end-->
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <!--comment-sec end-->
                                 </div>
+                                @endif
                             </div>
                             <!--usr_quest end-->
                         </div>
@@ -81,26 +53,27 @@
                     </div>
                     <!--forum-post-view end-->
                     <div class="post-comment-box">
-                        <h3>03 Comments</h3>
+                        <h3>Bình luận</h3>
+                        @if(Auth::user())
                         <div class="user-poster">
                             <div class="usr-post-img">
-                                <img src="http://via.placeholder.com/40x40" alt="">
+                                <img src="{{asset('images/'.Auth::user()->avatar)}}" alt="">
                             </div>
                             <div class="post_comment_sec">
-                                <form>
-                                    <textarea placeholder="Your Answer"></textarea>
-                                    <button type="submit">Post Answer</button>
+                                <form method="post" action="{{route('user.post.comment',$post->id)}}">
+                                    @csrf
+                                    <textarea name="content" placeholder="Viết phản hồi"></textarea>
+                                    <button type="submit">Gửi</button>
                                 </form>
                             </div>
                             <!--post_comment_sec end-->
                         </div>
+                        @else 
+                        <p>Đăng nhập để bình luận</p>
+                        @endif
                         <!--user-poster end-->
                     </div>
                     <!--post-comment-box end-->
-                    <div class="next-prev">
-                        <a href="#" title="" class="fl-left">Preview</a>
-                        <a href="#" title="" class="fl-right">Next</a>
-                    </div>
                     <!--next-prev end-->
                 </div>
                 <div class="col-lg-4">
@@ -108,25 +81,25 @@
                         <ul>
                             <li>
                                 <i class="fa fa-heart"></i>
-                                <span>1185</span>
+                                <span>{{$post->total_like}}</span>
                             </li>
                             <li>
                                 <i class="fa fa-comment"></i>
-                                <span>1165</span>
+                                <span>{{$post->total_coment}}</span>
                             </li>
                             <li>
                                 <i class="fa fa-share-alt"></i>
-                                <span>1120</span>
+                                <span>{{$post->total_share}}</span>
                             </li>
                             <li>
                                 <i class="fa fa-eye"></i>
-                                <span>1009</span>
+                                <span>{{$post->total_view}}</span>
                             </li>
                         </ul>
                     </div>
                     <!--widget-feat end-->
                     <div class="widget widget-user">
-                        <h3 class="title-wd">Top User of the Week</h3>
+                        <h3 class="title-wd">Top Bài Viêt</h3>
                         <ul>
                             <li>
                                 <div class="usr-msg-details">

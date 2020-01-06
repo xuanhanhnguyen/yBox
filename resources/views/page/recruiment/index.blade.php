@@ -19,9 +19,18 @@
 		position: relative;
 		left: -12px;
 	}
+
 	.comment_box {
-    margin-bottom: 18px;
-}
+		margin-bottom: 18px;
+	}
+
+	li.page-item.active span {
+		height: 91% !important;
+	}
+
+	li.page-item.disabled span {
+		height: 91% !important;
+	}
 </style>
 @endSection
 
@@ -102,17 +111,14 @@
 											<div class="ed-opts">
 												<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
 												<ul class="ed-options">
-													<li><a href="#" title="">Edit Post</a></li>
-													<li><a href="#" title="">Unsaved</a></li>
-													<li><a href="#" title="">Unbid</a></li>
-													<li><a href="#" title="">Close</a></li>
-													<li><a href="#" title="">Hide</a></li>
+													<li><a href="#" title="">Chỉnh sửa</a></li>
+													<li><a href="{{route('user.post.delete',$postNew->id)}}" title="">Xóa</a></li>
 												</ul>
 											</div>
 										</div>
 										<div class="epi-sec">
 											<ul class="descp">
-												@if($user->id !=  $postNew->user->id)
+												@if($user->id != $postNew->user->id)
 												<li><img src="images/icon8.png" alt=""><a href="{{route('user.hr.follow',$postNew->user->id)}}"><span>Theo dõi</span></a></li>
 												@endif
 											</ul>
@@ -178,7 +184,7 @@
 															</div>
 															<div class="comment_box" style="float:none">
 																<form action="{{route('user.post.reply', [$postNew->id, $comment->id])}}" method="post">
-																	 @csrf
+																	@csrf
 																	<input style="width:75.3%" type="text" placeholder="Viết phản hồi " name="content">
 																	<button style="position: relative;left: -11px;" class="btn-reply" type="submit">Gửi</button>
 																</form>
@@ -192,7 +198,7 @@
 										<!--comment-sec end-->
 										<div class="post-comment">
 											<div class="cm_img">
-												<img  style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+												<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
 											</div>
 											<div class="comment_box">
 												<form action="{{route('user.post.comment',$postNew->id)}}" method="post">
@@ -290,10 +296,10 @@
 									<!--profiles-slider end-->
 								</div>
 								@if($posts)
-								@php $i  = 0 @endphp
+								@php $i = 0 @endphp
 								@foreach($posts as $postNew)
 								@php $i ++ @endphp
-								@if($i == 1) 
+								@if($i == 1)
 								@php continue @endphp
 								@endif
 								<div class="posty">
@@ -319,7 +325,7 @@
 										</div>
 										<div class="epi-sec">
 											<ul class="descp">
-												@if($user->id !=  $postNew->user->id)
+												@if($user->id != $postNew->user->id)
 												<li><img src="images/icon8.png" alt=""><a href="{{route('user.hr.follow',$postNew->user->id)}}"><span>Theo dõi</span></a></li>
 												@endif
 											</ul>
@@ -385,7 +391,7 @@
 															</div>
 															<div class="comment_box" style="float:none">
 																<form action="{{route('user.post.reply', [$postNew->id, $comment->id])}}" method="post">
-																	 @csrf
+																	@csrf
 																	<input style="width:75.3%" type="text" placeholder="Viết phản hồi " name="content">
 																	<button style="position: relative;left: -11px;" class="btn-reply" type="submit">Gửi</button>
 																</form>
@@ -399,7 +405,7 @@
 										<!--comment-sec end-->
 										<div class="post-comment">
 											<div class="cm_img">
-												<img  style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+												<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
 											</div>
 											<div class="comment_box">
 												<form action="{{route('user.post.comment',$postNew->id)}}" method="post">
@@ -598,7 +604,7 @@
 		<div class="conversation-box">
 			<div class="con-title mg-3">
 				<div class="chat-user-info">
-					<img  style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+					<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
 					<h3>{{$user->full_name}}<span class="status-info"></span></h3>
 				</div>
 				<div class="st-icons">

@@ -9,19 +9,31 @@ use App\Post;
 use App\Reply;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function likePost($postId)
     {
         $post = Post::findOrfail($postId);
-        $user = User::find(3);
-
-        LikePost::create([
-            'user_id' => $user->id,
-            'post_id' => $postId
-        ]);
-
+        if(!Auth::user()){
+            return view('vui_long_dang_nhap');
+        }
+        $user  = Auth::user();
+        $liked = LikePost::whereUser_id($user->id)->wherePost_id($postId)->first();
+        if($liked){
+            $liked->delete();
+            $post->total_like -= 1;
+            $post->save();
+            return redirect()->back();
+        }
+        else {
+            
+            LikePost::create([
+                'user_id' => $user->id,
+                'post_id' => $postId
+            ]);
+        }
         $post->total_like += 1;
 
         $post->save();
@@ -31,10 +43,9 @@ class UserController extends Controller
     public function commentPost(Request $request, $postId)
     {
         $post = Post::findOrfail($postId);
-        $user = User::find(3);
 
         ComentPost::create([
-            'user_id' => $user->id,
+            'user_id' => Auth::user()->id,
             'post_id' => $postId,
             'content' => $request->content
         ]);
@@ -63,14 +74,40 @@ class UserController extends Controller
     }
 
     public function followUser($hrId){
-        $user = User::find(3);
+        $hr = User::find($hrId); 
+        if(!Auth::user()){
+            return view('vui_long_dang_nhap');
+        }
+        $user     = Auth::user();
+        $followed = FollowHr::whereUser_id($user->id)->whereHr_id($hrId)->first();
+        if($followed){
+            $followed->delete();
+            $hr->total_follow -= 1;
+            $hr->save();
+            return redirect()->back();
+        }
+        else {
         FollowHr::create([
             'hr_id'   => $hrId,
             'user_id' => $user->id
         ]);
-        $hr = User::find($hrId); 
         $hr->total_follow += 1;
         $hr->save();
         return redirect()->back();
+        }
+    }
+    
+    public function deletePost($id){
+        $post = Post::find($id);
+        if(Auth::user()){
+            if(Auth::user()->id == $post->user->id){
+                echo(' delete ');   
+            }
+            echo('Bạn không có quyên thực hiện chức năng này !');
+        }
+        else{
+            echo('Bạn không có quyên thực hiện chức năng này !');
+        }
+        
     }
 }
