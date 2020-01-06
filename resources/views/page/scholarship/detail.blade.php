@@ -18,8 +18,39 @@
                                 <span><i class="fa fa-clock-o"></i>{{Helper::getTimeAgo($post->created_at)}}</span>
                                 <ul class="react-links">
                                     <li><a href="{{route('user.post.like',$post->id)}}" title=""><i class="fa fa-heart" {{$liked ? 'style=color:red' :''}}></i> Thích {{$post->total_like}}</a></li>
-                                    <li><a href="#" title=""><i class="fa fa-share-alt"></i> Chia sẻ</a></li>
+                                    <li><a class="add-post post_project" title=""><i class="fa fa-share-alt"></i> Chia sẻ</a></li>
                                 </ul>
+                                <div class="post-popup pst-pj">
+                                    <div class="post-project">
+                                        <h3 style="text-transform: uppercase">Chia sẻ</h3>
+                                        <div class="post-project-fields">
+                                            <form action="" method="post">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <input type="text" value="{{$post->title}}" placeholder="Tiêu đề">
+                                                    </div>
+
+                                                    <div class="col-lg-12">
+
+                                                        <textarea id="editor1" name="content" type="text" class="form-control ckeditor" rows="10" placeholder="Nội dung chia sẻ"></textarea>
+
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <ul class="text-center">
+                                                            <li><button class="active" type="submit" value="post">Chia sẻ</button></li>
+                                                            <li><a href="#" title="">Cancel</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!--post-project-fields end-->
+                                        <a href="#" title=""><i class="la la-times-circle-o"></i></a>
+                                    </div>
+                                    <!--post-project end-->
+                                </div>
+                                <!--post-project-popup end-->
                                 <p class="py-3">{!! $post->content !!}</p>
                                 @if(!$post->comment->isEmpty())
                                 <div class="comment-section">
