@@ -96,9 +96,7 @@
                 <a href="#" title=""><i class="fa fa-bars"></i></a>
             </div><!--menu-btn end-->
             <div class="user-account">
-
-               
-                    
+                
                 @if(Auth::user() !== null)
                     <div class="user-info">
                         <img src="http://via.placeholder.com/30x30" alt="">
@@ -122,7 +120,6 @@
                         <a href="{{route('login')}}" style="float:none">Đăng nhập</a>
                     </div>
                 @endif
-
             </div>
         </div><!--header-data end-->
     </div>
