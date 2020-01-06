@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +38,7 @@ Route::group(['prefix' => 'page'], function () {
     });
 });
 
-<<<<<<< HEAD
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::prefix('recruiment')->group(function () {
         Route::get('/create', 'Recruitment\RecruimentsController@create');
@@ -54,11 +56,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('delete/{id}', 'Scholarship\ScholarshipController@delete');
         Route::get('/show', 'Scholarship\ScholarshipController@showScholarship')->name('showScholarship');
     });
+    Route::prefix('user')->group(function () {
+      
+        Route::get('update/{id}', 'User\AdminController@update');
+        Route::post('update/{id}', 'User\AdminController@saveUpdate');
+        Route::get('delete/{id}', 'User\AdminController@delete');
+        Route::get('/show', 'User\AdminController@showAdmin')->name('showUser');
+    });
 });
 
 
 Auth::routes();
-=======
+
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 });
@@ -70,6 +79,5 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/follow-user/{hrId}', 'UserController@followUser')->name('user.hr.follow');
 
 });
->>>>>>> 2f6bb649cd60df91b90be45f6231ae319541e803
 
 Auth::routes();

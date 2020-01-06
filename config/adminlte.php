@@ -199,6 +199,19 @@ return [
                
             ],
         ],
+        'QUẢN LÍ NGƯỜI DÙNG',
+     
+        [
+            'text'    => 'Người dùng',
+            'icon'    => 'fas fa-columns',
+            'submenu' => [
+                [
+                    'text' => 'Danh sách người dùng',
+                    'url'  => 'admin/user/show',
+                ],
+               
+            ],
+        ],
     ],
 
     /*
