@@ -21,6 +21,9 @@
           <div class="col-lg-9">
             <div class="main-ws-sec">
               <div class="posts-section">
+                @if($posts->isEmpty())
+                <div class="alert warning">Không có kết quả nào</div>
+                @endif
                 @foreach($posts as $post)
                 <div class="post-bar d-flex">
                   <div class="thubnail">
@@ -58,112 +61,40 @@
             <div class="right-sidebar">
               <div class="widget widget-about">
                 <img src="images/wd-logo.png" alt="">
-                <h3>Track Time on Workwise</h3>
-                <span>Pay only for the Hours worked</span>
+                <h3>Ybox.com.vn</h3>
+                <span>Nơi tuyển dụng tốt nhất</span>
                 <div class="sign_link">
-                  <h3><a href="#" title="">Sign up</a></h3>
+                  <h3><a href="javascript:void(0)" title="">We are Pro</a></h3>
                 </div>
               </div>
               <!--widget-about end-->
               <div class="widget widget-jobs">
-                <div class="sd-title">
-                  <h3>Top Jobs</h3>
-                  <i class="la la-ellipsis-v"></i>
-                </div>
                 <div class="jobs-list">
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Senior Product Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Senior UI / UX Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Junior Seo Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Senior PHP Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Senior Developer Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
+                <div class="sd-title">
+									<h3>TOP BÀI ĐĂNG</h3>
+									<i class="la la-ellipsis-v"></i>
+								</div>
+                @foreach($postTop as $post )
+								<div class="jobs-list">
+									<div class="job-info">
+										<div class="job-details">
+											<h3>{{$post->title}}</h3>
+											<p>{!!$post->content!!}</p>
+										</div>
+										<div class="hr-rate">
+											<span>{{$post->user->full_name}}</span>
+										</div>
+									</div>
+									<!--job-info end-->
+                  
+								</div>
+                @endforeach
+            
                   <!--job-info end-->
                 </div>
                 <!--jobs-list end-->
               </div>
               <!--widget-jobs end-->
-              <div class="widget widget-jobs">
-                <div class="sd-title">
-                  <h3>Most Viewed This Week</h3>
-                  <i class="la la-ellipsis-v"></i>
-                </div>
-                <div class="jobs-list">
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Senior Product Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Senior UI / UX Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                  <div class="job-info">
-                    <div class="job-details">
-                      <h3>Junior Seo Designer</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                    </div>
-                    <div class="hr-rate">
-                      <span>$25/hr</span>
-                    </div>
-                  </div>
-                  <!--job-info end-->
-                </div>
-                <!--jobs-list end-->
-              </div>
               <!--widget-jobs end-->
             </div>
             <!--right-sidebar end-->

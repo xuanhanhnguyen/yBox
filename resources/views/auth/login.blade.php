@@ -67,13 +67,6 @@
                                         </div>
                                         <div class="col-lg-12 no-pdd">
                                             <div class="checky-sec">
-                                                <div class="fgt-sec">
-                                                    <input type="checkbox" name="cc" id="c1">
-                                                    <label for="c1">
-                                                        <span></span>
-                                                    </label>
-                                                    <small>Nhớ mật khẩu</small>
-                                                </div><!--fgt-sec end-->
                                                 <a href="#" title="">Quên mật khẩu?</a>
                                             </div>
                                         </div>
@@ -82,15 +75,6 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="login-resources">
-                                    <h4>Đăng nhập bằng:</h4>
-                                    <ul>
-                                        <li><a href="#" title="" class="fb"><i
-                                                        class="fab fa-facebook-f"></i>Facebook</a></li>
-                                        <li><a href="#" title="" class="tw"><i class="fab fa-twitter"></i>Twitter</a>
-                                        </li>
-                                    </ul>
-                                </div><!--login-resources end-->
                             </div><!--sign_in_sec end-->
                             <div class="sign_in_sec" id="tab-2">
                                 <div class="signup-tab">

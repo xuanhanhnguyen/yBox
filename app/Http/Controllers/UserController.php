@@ -10,6 +10,7 @@ use App\Reply;
 use App\SharePost;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -106,25 +107,25 @@ class UserController extends Controller
                 $post->delete();
                 return redirect()->back();
             }
-            echo('Bạn không có quyên thực hiện chức năng này !');
+            echo ('Bạn không có quyên thực hiện chức năng này !');
         } else {
-            echo('Bạn không có quyên thực hiện chức năng này !');
+            echo ('Bạn không có quyên thực hiện chức năng này !');
         }
     }
 
     public function share(Request $request, $postId)
     {
-      
+
         $post = Post::find($postId);
         if (!Auth::user()) {
             return view('vui_long_dang_nhap');
         }
-//        return $postId;
+        //        return $postId;
         $user = Auth::user();
         $share = SharePost::where('user_id', $user->id)
             ->where('post_id', $postId)
             ->first();
-//        return $share;
+        //        return $share;
         if ($share) {
             $share->delete();
             $post->total_share -= 1;
@@ -140,5 +141,16 @@ class UserController extends Controller
             $post->save();
             return redirect()->back();
         }
+    }
+
+    public function search(Request $request)
+    {   
+        $posts = Post::whereType_id(2)->where('title', 'like', '%'.$request->search.'%')->orderBy('id', 'desc')->paginate(6);
+        $postTop = Post::where('end_date', '>', Carbon::now())->get();
+
+        return view('page.scholarship.index', [
+            'posts'   => $posts,
+            'postTop' => $postTop
+        ]);
     }
 }

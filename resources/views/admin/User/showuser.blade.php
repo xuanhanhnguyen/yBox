@@ -25,7 +25,6 @@
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Email</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Giới tính</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Follow</th>
-                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Hình ảnh</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="2">Tác vụ</th>
 
                             </tr>
@@ -51,7 +50,6 @@
                                     @endif
                                 </td>
                                 <td class="sorting_1">{{$user->total_follow}}</td>
-                                <td class="sorting_1"><img width="100px;" src="/images/{{ $user->avatar }}" />
 
                                 <td style="width: 50px;">
                                     <button type="button" class="btn btn-block btn-default btn-sm"><a href="update/{{ $user->id }}">Sửa</a></button>

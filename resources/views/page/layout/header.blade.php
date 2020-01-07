@@ -5,9 +5,9 @@
                 <a href="page" title=""><img src="images/logo.png" alt=""></a>
             </div><!--logo end-->
             <div class="search-bar">
-                <form>
-                    <input type="text" name="search" placeholder="Search...">
-                    <button type="submit"><i class="la la-search"></i></button>
+                <form method="get" action="{{route('user.post.search')}}">
+                    <input type="text" name="search" placeholder="Tìm kiếm học bổng...">
+                    <button style="cursor:pointer" type="submit"><i class="la la-search"></i></button>
                 </form>
             </div><!--search-bar end-->
             <nav>
@@ -33,63 +33,6 @@
                         </a>
                     </li>
                     {{-------------------}}
-                    <li>
-                        <a title="" class="not-box-open">
-                            <span><img src="images/icon7.png" alt=""></span>
-                            Thông báo
-                        </a>
-                        <div class="notification-box">
-                            <div class="nt-title">
-                                <h4>Setting</h4>
-                                <a href="#" title="">Clear all</a>
-                            </div>
-                            <div class="nott-list">
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img1.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div><!--notification-info -->
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img2.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div><!--notification-info -->
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img3.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div><!--notification-info -->
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img2.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div><!--notification-info -->
-                                </div>
-                                <div class="view-all-nots">
-                                    <a href="#" title="">View All Notification</a>
-                                </div>
-                            </div><!--nott-list end-->
-                        </div><!--notification-box end-->
-                    </li>
                 </ul>
             </nav><!--nav end-->
             <div class="menu-btn">

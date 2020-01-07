@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class RecruimentController extends Controller
@@ -35,15 +36,28 @@ class RecruimentController extends Controller
         /**
          * Get all post recruiment 
          */
-
+        
         $posts = Post::whereType_id(1)
                 ->orderBy('id','desc')
                 ->paginate(4);
+        
+        /**
+         * Get 6 company 
+         * 
+         */
+        $companies = User::whereRole_id(2)->orderBy('id','desc')->take(5)->get();
+        /**
+         * Get lall post top
+         */
+
+        $postTop = Post::where('end_date' , '>' , Carbon::now())->get();
         return view('page.recruiment.index', [
-            'user'    => $user,
-            'postNew' => $postNew,
-            'posts'   => $posts
-        ]);
+            'user'      => $user,
+            'postNew'   => $postNew,
+            'posts'     => $posts,
+            'postTop'   => $postTop,
+            'companies' => $companies
+        ]); 
     }
     public function createPost(Request $request)
     {

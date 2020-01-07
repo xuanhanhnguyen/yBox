@@ -62,7 +62,7 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Up Post Top</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -72,18 +72,32 @@
 
 
                                                 <form class="w3-container w3-display-middle w3-card-4 w3-padding-16" method="POST" id="payment-form" action="{!! URL::to('paypal') !!}">
-                                                    <div class="w3-container w3-teal w3-padding-16">Paywith Paypal</div>
                                                     {{ csrf_field() }}
-                                                    <label class="w3-text-blue"><b>Chọn số tiền</b></label>
-                                                    <input class="w3-input w3-border" id="amount" type="text" name="amount"></p>
-                                                    <button class="w3-btn w3-blue">Pay with PayPal</button>
-                                                </form>
+                                                   <div class="form-group">
+                                                   <label class="w3-text-blue"><b>Chọn bài viết </b></label>
+
+                                                       <select name="post_id" id="">
+                                                           @foreach($postRecruiment as $post)
+                                                           <option value="{{$post->id}}">{{$post->title}}</option>
+                                                           @endforeach
+                                                       </select>
+                                                   </div>
+                                                   <div class="form-group">
+                                                   <label class="w3-text-blue"><b>Chọn gói kích hoạt</b></label>
+
+                                                       <select name="amount" id="">
+                                                           <option value="100">100 usd/3 ngày</option>
+                                                           <option value="200">200 usd/5 ngày</option>
+                                                           <option value="300">300 usd/7 ngày</option>
+                                                       </select>
+                                                   </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                <button style="cursor:pointer" type="submit" class="btn btn-primary">Kích hoạt</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -181,9 +195,6 @@
                                             </div>
                                             <!--post-bar end-->
                                         @endforeach
-                                        <div class="process-comm p-0">
-                                             phân trang
-                                        </div>
                                     </div>
                                     <!--posts-section end-->
                                 </div>

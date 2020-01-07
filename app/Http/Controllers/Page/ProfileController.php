@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Page;
 
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\User;
@@ -24,8 +25,10 @@ class ProfileController extends Controller
         JOIN post p ON p.id = s.post_id 
         JOIN users u ON u.id = p.create_by 
         WHERE s.user_id = ?', [Auth::user()->id]);
+        
+        $postRecruiment = Post::whereCreate_by(Auth::user()->id)->whereType_id(1)->get();
 
-        return view('page.profile', ['data' => $data]);
+        return view('page.profile', ['data' => $data, 'postRecruiment' => $postRecruiment]);
     }
 
     public function avatar(Request $request)

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -46,12 +48,14 @@ class PaymentController extends Controller
     public function payWithpaypal(Request $request)
     {
 
+        \Session::put('post_id', $request->post_id);
+        \Session::put('amount', $request->amount);
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
         $item_1 = new Item();
 
-        $item_1->setName('Item 1')
+        $item_1->setName('Up top post')
             /** item name **/
             ->setCurrency('USD')
             ->setQuantity(1)
@@ -68,7 +72,7 @@ class PaymentController extends Controller
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
-            ->setDescription('Your transaction description');
+            ->setDescription('Đẩy bài viết lên top');
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::to('status'))
@@ -141,11 +145,31 @@ class PaymentController extends Controller
 
         if ($result->getState() == 'approved') {
 
-            \Session::put('success', 'Payment success');
+            $post = Post::find(\Session::get('post_id')); 
+            if(\Session::get('amount') == 100){
+                
+                $endDate = Carbon::now()->add(3, 'day');
+                $post->end_date = $endDate;
+                $post->save();
+            }
+            else if(\Session::get('amount') == 200){
+                $endDate = Carbon::now()->add(5, 'day');
+                $post->end_date = $endDate;
+                $post->save();
+            }
+            else {
+                $endDate = Carbon::now()->add(7, 'day');
+                $post->end_date = $endDate;
+                $post->save();
+            }
+            \Session::forget('post_id'); 
+            \Session::forget('amount'); 
+
+            \Session::put('success', 'Xử lý thành công');
             return redirect()->back();
         }
 
-        \Session::put('error', 'Payment failed');
+        \Session::put('error', 'Đã xảy ra lỗi');
         return redirect()->back();
     }
 }

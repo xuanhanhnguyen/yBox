@@ -23,7 +23,6 @@
                                 <th class="sorting_asc" tabindex="0" rowspan="1" colspan="1">id</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Tiêu đề</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Nội dung</th>
-                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Hình ảnh</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Like</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Comment</th>
                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">Share</th>
@@ -42,8 +41,7 @@
                             <tr role="row" class="odd">
                                 <td class="sorting_1">{{$scholarship->id}}</td>
                                 <td class="sorting_1">{{$scholarship->title}}</td>
-                                <td class="sorting_1">{{$scholarship->content}}</td>
-                                <td class="sorting_1"><img width="100px;" src="/upload/scholarship/{{ $scholarship->image }}" />
+                                <td class="sorting_1">{!!$scholarship->content!!}</td>
                                 <td class="sorting_1">{{$scholarship->total_like}}</td>
                                 <td class="sorting_1">{{$scholarship->total_coment}}</td>
                                 <td class="sorting_1">{{$scholarship->total_share}}</td>

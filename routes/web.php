@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -99,6 +101,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/follow-user/{hrId}', 'UserController@followUser')->name('user.hr.follow');
     Route::get('/delete-post/{postId}', 'UserController@deletePost')->name('user.post.delete');
     Route::post('/share-post/{postId}', 'UserController@share')->name('user.post.share');
+    Route::get('/search-post', 'UserController@search')->name('user.post.search');
 });
 
 
@@ -111,6 +114,8 @@ Route::post('paypal', 'PaymentController@payWithpaypal');
 
 // route for check status of the payment
 Route::get('status', 'PaymentController@getPaymentStatus');
+
+
 
 
 Auth::routes();
