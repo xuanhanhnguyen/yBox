@@ -24,7 +24,7 @@
                                     <div class="post-project">
                                         <h3 style="text-transform: uppercase">Chia sẻ</h3>
                                         <div class="post-project-fields">
-                                            <form action="" method="post">
+                                            <form action="{{route('user.post.share',$post->id)}}" method="post">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-lg-12">
@@ -39,7 +39,6 @@
                                                     <div class="col-lg-12">
                                                         <ul class="text-center">
                                                             <li><button class="active" type="submit" value="post">Chia sẻ</button></li>
-                                                            <li><a href="#" title="">Cancel</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

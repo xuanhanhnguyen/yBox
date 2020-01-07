@@ -20,7 +20,7 @@ class UserController extends Controller
         if (!Auth::user()) {
             return view('vui_long_dang_nhap');
         }
-        $user  = Auth::user();
+        $user = Auth::user();
         $liked = LikePost::whereUser_id($user->id)->wherePost_id($postId)->first();
         if ($liked) {
             $liked->delete();
@@ -40,6 +40,7 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
     public function commentPost(Request $request, $postId)
     {
         $post = Post::findOrfail($postId);
@@ -62,9 +63,9 @@ class UserController extends Controller
         $user = User::find(2);
 
         Reply::create([
-            'user_id'    => $user->id,
+            'user_id' => $user->id,
             'comment_id' => $commentId,
-            'content'    => $request->content
+            'content' => $request->content
         ]);
 
         $post->total_coment += 1;
@@ -79,7 +80,7 @@ class UserController extends Controller
         if (!Auth::user()) {
             return view('vui_long_dang_nhap');
         }
-        $user     = Auth::user();
+        $user = Auth::user();
         $followed = FollowHr::whereUser_id($user->id)->whereHr_id($hrId)->first();
         if ($followed) {
             $followed->delete();
@@ -88,7 +89,7 @@ class UserController extends Controller
             return redirect()->back();
         } else {
             FollowHr::create([
-                'hr_id'   => $hrId,
+                'hr_id' => $hrId,
                 'user_id' => $user->id
             ]);
             $hr->total_follow += 1;
@@ -105,21 +106,25 @@ class UserController extends Controller
                 $post->delete();
                 return redirect()->back();
             }
-            echo ('Bạn không có quyên thực hiện chức năng này !');
+            echo('Bạn không có quyên thực hiện chức năng này !');
         } else {
-            echo ('Bạn không có quyên thực hiện chức năng này !');
+            echo('Bạn không có quyên thực hiện chức năng này !');
         }
     }
 
-    public function share($postId)
+    public function share(Request $request, $postId)
     {
       
         $post = Post::find($postId);
         if (!Auth::user()) {
             return view('vui_long_dang_nhap');
         }
-        $user     = Auth::user();
-        $share    = SharePost::whereUser_id($user->id)->wherePost_id($postId)->first();
+//        return $postId;
+        $user = Auth::user();
+        $share = SharePost::where('user_id', $user->id)
+            ->where('post_id', $postId)
+            ->first();
+//        return $share;
         if ($share) {
             $share->delete();
             $post->total_share -= 1;
@@ -128,7 +133,8 @@ class UserController extends Controller
         } else {
             SharePost::create([
                 'post_id' => $postId,
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'content' => $request->content
             ]);
             $post->total_share += 1;
             $post->save();
