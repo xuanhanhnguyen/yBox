@@ -101,4 +101,16 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/share-post/{postId}', 'UserController@share')->name('user.post.share');
 });
 
+
+
+
+/**
+ *  Xử lý paypal
+ */
+Route::post('paypal', 'PaymentController@payWithpaypal');
+
+// route for check status of the payment
+Route::get('status', 'PaymentController@getPaymentStatus');
+
+
 Auth::routes();

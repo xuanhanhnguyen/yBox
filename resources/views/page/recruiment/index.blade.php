@@ -84,6 +84,7 @@
 					</div>
 					<div class="col-lg-6 col-md-8 no-pd">
 						<div class="main-ws-sec">
+						 	@if(Auth::user()->role_id != 3)
 							<div class="post-topbar">
 								<div class="user-picy">
 									<img style="width:50px; height:50px;border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
@@ -95,6 +96,7 @@
 								</div>
 								<!--post-st end-->
 							</div>
+							@endif
 							<!--post-topbar end-->
 							<div class="posts-section">
 								@if($postNew)
