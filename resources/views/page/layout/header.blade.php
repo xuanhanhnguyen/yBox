@@ -1,4 +1,4 @@
-    <header>
+<header>
     <div class="container">
         <div class="header-data">
             <div class="logo">
@@ -96,12 +96,13 @@
                 <a href="#" title=""><i class="fa fa-bars"></i></a>
             </div><!--menu-btn end-->
             <div class="user-account" style="width: 118px;">
-            
+
                 @if(Auth::user() !== null)
                     <div class="user-info">
-                        <img style="width:30px; height:30px; border-radius:50%" src="{{asset('upload/avatar/'.Auth::user()->avatar)}}" alt="">
+                        <img height="30px" width="30px"
+                             src="upload/avatar/{{Auth::user()->avatar}}" alt="">
                         <a>{{Auth::user()->full_name}}</a>
-                        <i style="right: 3px;    cursor: pointer;" class="la la-sort-down" ></i>
+                        <i style="right: 3px;cursor: pointer;" class="la la-sort-down"></i>
                     </div>
                     <div class="user-account-settingss">
                         <ul class="us-links">
@@ -109,10 +110,11 @@
                             <li><a href="#" title="">Đổi mật khẩu</a></li>
                         </ul>
                         <h3 class="tc"><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-lg"></i>Đăng xuất</a>
+                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-lg"></i>Đăng
+                                xuất</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
-                            </form>    
+                            </form>
                         </h3>
                     </div><!--user-account-settingss end-->
                 @else

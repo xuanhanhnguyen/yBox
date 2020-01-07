@@ -98,7 +98,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/reply-comment/{postId}/{commentId}', 'UserController@replyPost')->name('user.post.reply');
     Route::get('/follow-user/{hrId}', 'UserController@followUser')->name('user.hr.follow');
     Route::get('/delete-post/{postId}', 'UserController@deletePost')->name('user.post.delete');
-
+    Route::post('/share-post/{postId}', 'UserController@share')->name('user.post.share');
 });
 
 Auth::routes();
