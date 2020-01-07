@@ -113,6 +113,7 @@ class UserController extends Controller
 
     public function share($postId)
     {
+      
         $post = Post::find($postId);
         if (!Auth::user()) {
             return view('vui_long_dang_nhap');

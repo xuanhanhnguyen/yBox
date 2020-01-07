@@ -45,7 +45,7 @@
 								<div class="user-profile">
 									<div class="username-dt">
 										<div class="usr-pic">
-											<img src="{{asset('images/'.$user->avatar)}}" alt="">
+											<img src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 										</div>
 									</div>
 									<!--username-dt end-->
@@ -102,7 +102,7 @@
 									<div class="post-bar no-margin">
 										<div class="post_topbar">
 											<div class="usy-dt">
-												<img style="width:40px; height:40px; border-radius:50%;" src="{{asset('images/'.$postNew->user->avatar)}}" alt="">
+												<img style="width:40px; height:40px; border-radius:50%;" src="{{asset('upload/avatar/'.$postNew->user->avatar)}}" alt="">
 												<div class="usy-name">
 													<h3>{{$postNew->user->full_name}}</h3>
 													<span><img src="images/clock.png" alt="">{{Helper::getTimeAgo($postNew->created_at)}}</span>
@@ -150,7 +150,7 @@
 												<li>
 													<div class="comment-list">
 														<div class="bg-img">
-															<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$comment->user->avatar)}}" alt="">
+															<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$comment->user->avatar)}}" alt="">
 														</div>
 														<div class="comment">
 															<h3>{{$comment->user->full_name}}</h3>
@@ -165,7 +165,7 @@
 														<li>
 															<div class="comment-list">
 																<div class="bg-img">
-																	<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$reply->user->avatar)}}" alt="">
+																	<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$reply->user->avatar)}}" alt="">
 																</div>
 																<div class="comment">
 																	<h3>{{$reply->user->full_name}}</h3>
@@ -179,7 +179,7 @@
 														@endforeach
 														<div class="post-comment">
 															<div class="cm_img">
-																<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+																<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 															</div>
 															<div class="comment_box" style="float:none">
 																<form action="{{route('user.post.reply', [$postNew->id, $comment->id])}}" method="post">
@@ -197,7 +197,7 @@
 										<!--comment-sec end-->
 										<div class="post-comment">
 											<div class="cm_img">
-												<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+												<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 											</div>
 											<div class="comment_box">
 												<form action="{{route('user.post.comment',$postNew->id)}}" method="post">
@@ -305,7 +305,7 @@
 									<div class="post-bar no-margin">
 										<div class="post_topbar">
 											<div class="usy-dt">
-												<img style="width:40px; height:40px; border-radius:50%;" src="{{asset('images/'.$postNew->user->avatar)}}" alt="">
+												<img style="width:40px; height:40px; border-radius:50%;" src="{{asset('upload/avatar/'.$postNew->user->avatar)}}" alt="">
 												<div class="usy-name">
 													<h3>{{$postNew->user->full_name}}</h3>
 													<span><img src="images/clock.png" alt="">{{Helper::getTimeAgo($postNew->created_at)}}</span>
@@ -353,7 +353,7 @@
 												<li>
 													<div class="comment-list">
 														<div class="bg-img">
-															<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$comment->user->avatar)}}" alt="">
+															<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$comment->user->avatar)}}" alt="">
 														</div>
 														<div class="comment">
 															<h3>{{$comment->user->full_name}}</h3>
@@ -368,7 +368,7 @@
 														<li>
 															<div class="comment-list">
 																<div class="bg-img">
-																	<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$reply->user->avatar)}}" alt="">
+																	<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$reply->user->avatar)}}" alt="">
 																</div>
 																<div class="comment">
 																	<h3>{{$reply->user->full_name}}</h3>
@@ -382,7 +382,7 @@
 														@endforeach
 														<div class="post-comment">
 															<div class="cm_img">
-																<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+																<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 															</div>
 															<div class="comment_box" style="float:none">
 																<form action="{{route('user.post.reply', [$postNew->id, $comment->id])}}" method="post">
@@ -400,7 +400,7 @@
 										<!--comment-sec end-->
 										<div class="post-comment">
 											<div class="cm_img">
-												<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+												<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 											</div>
 											<div class="comment_box">
 												<form action="{{route('user.post.comment',$postNew->id)}}" method="post">
@@ -599,7 +599,7 @@
 		<div class="conversation-box">
 			<div class="con-title mg-3">
 				<div class="chat-user-info">
-					<img style="width:40px; height:40px; border-radius:50%" src="{{asset('images/'.$user->avatar)}}" alt="">
+					<img style="width:40px; height:40px; border-radius:50%" src="{{asset('upload/avatar/'.$user->avatar)}}" alt="">
 					<h3>{{$user->full_name}}<span class="status-info"></span></h3>
 				</div>
 				<div class="st-icons">
