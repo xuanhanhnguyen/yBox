@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use App\Post;
 use Illuminate\Support\Carbon;
@@ -28,7 +28,10 @@ Route::get('/', function () {
 Route::group(['prefix' => 'page'], function () {
 
     Route::get('/', 'Page\HomeController@index');
-    
+    Route::get('/password', 'Page\UserController@index');
+    Route::post('/password', 'Page\UserController@edit')->name('edit_password');
+    Route::post('/reset', 'Page\UserController@update')->name('reset');
+
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/','Page\ProfileController@index');
         Route::post('/avatar','Page\ProfileController@avatar')->name('changeAvatar');

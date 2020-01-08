@@ -50,7 +50,7 @@
                     <div class="user-account-settingss">
                         <ul class="us-links">
                             <li><a href="page/profile" title="">Trang cá nhân</a></li>
-                            <li><a href="#" title="">Đổi mật khẩu</a></li>
+                            <li><a href="page/password" title="">Đổi mật khẩu</a></li>
                         </ul>
                         <h3 class="tc"><a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-lg"></i>Đăng

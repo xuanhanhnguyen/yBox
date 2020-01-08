@@ -78,7 +78,7 @@
                             <div class="sign_in_sec" id="tab-5">
 
                                 <h3>Quên mật khẩu</h3>
-                                <form method="POST" action="{{ route('reset') }}">
+                                <form method="POST" action="{{ route('reset_password') }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12 no-pdd">
